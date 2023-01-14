@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from utils.models import CoreModel
 
-class User(CoreModel):
+class Users(AbstractUser, CoreModel):
     username = models.CharField(max_length=150, unique=True, db_index=True, verbose_name="用户名", help_text="用户名")
     email = models.EmailField(max_length=255, null=True, blank=True, verbose_name="邮箱", help_text="邮箱")
     mobile = models.CharField(max_length=255, null=True, blank=True, verbose_name="联系方式", help_text="联系方式")

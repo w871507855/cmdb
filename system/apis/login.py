@@ -21,10 +21,10 @@ def login(request, loginInfo: LoginSchemaIn):
         role_list = []
         for item in role:
             role_list.append(item["id"])
-        user_obj_dict = model_to_dict(user_obj)
+        user_obj_dict = model_to_dict(user_obj)   
         user_obj_dict["role"] = role_list
         del user_obj_dict["password"]
-        del user_obj_dict["avatar"]
+        # del user_obj_dict["avatar"]
         time_now = int(datetime.now().timestamp())
         jwt = Jwt(SECRET_KEY, user_obj_dict, valid_to=time_now + TOKEN_LIFETIME)
         data = {

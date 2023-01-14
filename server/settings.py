@@ -125,3 +125,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TOKEN_LIFETIME = 12 * 60 * 60
+
+AUTH_USER_MODEL = 'system.Users'
+USERNAME_FIELD = 'username'
