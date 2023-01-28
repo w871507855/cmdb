@@ -1,6 +1,6 @@
 from typing import List
 from django.shortcuts import get_object_or_404
-from ninja import Router, ModelSchema
+from ninja import Router, ModelSchema, Schema
 from ninja.pagination import paginate
 from .models import Asset
 from utils.ninga import MyPagination
@@ -21,6 +21,12 @@ class AssetShemaOut(ModelSchema):
     class Config:
         model = Asset
         model_fields = "__all__"
+
+
+# class Out(Schema):
+#     code: str = 200
+#     msg: str
+#     data: AssetShemaOut or List[AssetShemaOut]
 
 
 # 查询所有资产

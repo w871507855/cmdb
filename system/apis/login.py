@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate
 from django.forms import model_to_dict
 from server.settings import SECRET_KEY, TOKEN_LIFETIME
 from utils.jwt import Jwt
+from utils.response import Response
 
 router = Router()
 
@@ -34,6 +35,6 @@ def login(request, loginInfo: LoginSchemaIn):
             "userInfo": user_obj_dict,
             "token": jwt.encode()
         }
-        return {"data": data}
+        return Response(data=data, code=200, message="获取成功")
     else:
-        return {"msg": "用户或者密码有问题"}
+        raise{"msg": "用户名或者密码有问题"}
